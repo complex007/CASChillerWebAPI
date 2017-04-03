@@ -1,0 +1,1816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CASChillerSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAS_Compressor">
+          <Key>
+            <PropertyRef Name="CAS_compressor_id" />
+          </Key>
+          <Property Name="CAS_compressor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="system_id" Type="int" />
+          <Property Name="in_service" Type="bit" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="50" />
+          <Property Name="motor_power" Type="float" />
+          <Property Name="full_loaded_pressure" Type="float" />
+          <Property Name="full_loaded_air_flow" Type="float" />
+          <Property Name="average_temperature" Type="float" />
+          <Property Name="atmosphere_pressure" Type="float" />
+          <Property Name="inlet_modulation" Type="varchar" MaxLength="50" />
+          <Property Name="outlet_modulation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CAS_Compressor_Profile">
+          <Key>
+            <PropertyRef Name="CAS_compressor_profile_id" />
+          </Key>
+          <Property Name="CAS_compressor_profile_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="compressor_id" Type="int" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="measure_point" Type="varchar" MaxLength="50" />
+          <Property Name="time" Type="datetime" />
+          <Property Name="air_flow" Type="float" />
+          <Property Name="temperature" Type="float" />
+          <Property Name="pressure" Type="float" />
+          <Property Name="velocity" Type="float" />
+        </EntityType>
+        <EntityType Name="CAS_End_Use">
+          <Key>
+            <PropertyRef Name="CAS_end_use_id" />
+          </Key>
+          <Property Name="CAS_end_use_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="facility_id" Type="int" />
+          <Property Name="end_use_name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="location" Type="varchar" MaxLength="50" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="50" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="required_air_flow" Type="float" />
+          <Property Name="required_pressure" Type="float" />
+          <Property Name="measured_pressure" Type="float" />
+        </EntityType>
+        <EntityType Name="CAS_End_Use_Profile">
+          <Key>
+            <PropertyRef Name="CAS_end_use_profile_id" />
+          </Key>
+          <Property Name="CAS_end_use_profile_id" Type="int" Nullable="false" />
+          <Property Name="end_use_id" Type="int" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="measure_point" Type="varchar" MaxLength="50" />
+          <Property Name="time" Type="datetime" />
+          <Property Name="air_flow" Type="float" />
+          <Property Name="temperature" Type="float" />
+          <Property Name="pressure" Type="float" />
+          <Property Name="velocity" Type="float" />
+        </EntityType>
+        <EntityType Name="CAS_Facility">
+          <Key>
+            <PropertyRef Name="CAS_facility_id" />
+          </Key>
+          <Property Name="CAS_facility_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="facility_name" Type="varchar" MaxLength="50" />
+          <Property Name="annual_energy_use" Type="float" />
+          <Property Name="end_use_number" Type="int" />
+        </EntityType>
+        <EntityType Name="CAS_Production_Schedule">
+          <Key>
+            <PropertyRef Name="CAS_production_schedule_id" />
+          </Key>
+          <Property Name="CAS_production_schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facility_id" Type="int" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="schedule_name" Type="varchar" MaxLength="50" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="operating_hours" Type="float" />
+          <Property Name="standby_hours" Type="float" />
+          <Property Name="off_hours" Type="float" />
+          <Property Name="total_days" Type="float" />
+        </EntityType>
+        <EntityType Name="CAS_Reduce_Air_Leaks">
+          <Key>
+            <PropertyRef Name="CAS_reduce_air_leaks_id" />
+          </Key>
+          <Property Name="CAS_reduce_air_leaks_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="system_id" Type="int" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="air_leak_before" Type="float" />
+          <Property Name="air_leak_after" Type="float" />
+          <Property Name="reduced_air_leak" Type="float" />
+          <Property Name="compressor_efficiency" Type="float" />
+          <Property Name="annual_energy_savings" Type="float" />
+          <Property Name="repair_cost" Type="float" />
+          <Property Name="payback_years" Type="int" />
+          <Property Name="contact" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CAS_System">
+          <Key>
+            <PropertyRef Name="CAS_system_id" />
+          </Key>
+          <Property Name="CAS_system_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="facility_id" Type="int" />
+          <Property Name="contact" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="nominal_system_pressure" Type="float" />
+          <Property Name="air_flow_capacity" Type="float" />
+          <Property Name="system_elevation" Type="float" />
+          <Property Name="system_air_storage_capacity" Type="float" />
+          <Property Name="sequencer_control" Type="bit" />
+        </EntityType>
+        <EntityType Name="Chiller">
+          <Key>
+            <PropertyRef Name="chiller_id" />
+          </Key>
+          <Property Name="chiller_id" Type="int" Nullable="false" />
+          <Property Name="facility_id" Type="int" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="total_system_power_kw" Type="float" />
+          <Property Name="cooling_load_RT" Type="float" />
+          <Property Name="system_efficiency_kwRT" Type="float" />
+          <Property Name="system_heat_balance" Type="float" />
+        </EntityType>
+        <EntityType Name="Chiller_Equipment">
+          <Key>
+            <PropertyRef Name="chiller_equipment_id" />
+          </Key>
+          <Property Name="chiller_equipment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="etype" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ename" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="facility_id" Type="int" Nullable="false" />
+          <Property Name="locationx" Type="float" Nullable="false" />
+          <Property Name="locationy" Type="float" Nullable="false" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="50" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Chiller_Equipment_Profile">
+          <Key>
+            <PropertyRef Name="chiller_equipment_profile_id" />
+          </Key>
+          <Property Name="chiller_equipment_profile_id" Type="int" Nullable="false" />
+          <Property Name="equipment_id" Type="int" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="e_status" Type="nvarchar" MaxLength="255" />
+          <Property Name="energy" Type="float" />
+        </EntityType>
+        <EntityType Name="Chiller_Facility">
+          <Key>
+            <PropertyRef Name="chiller_facility_id" />
+          </Key>
+          <Property Name="chiller_facility_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="facility_name" Type="varchar" MaxLength="50" />
+          <Property Name="annual_energy_use" Type="float" />
+          <Property Name="flength" Type="float" />
+          <Property Name="fwidth" Type="float" />
+          <Property Name="fheight" Type="float" />
+        </EntityType>
+        <EntityType Name="Chiller_Profile">
+          <Key>
+            <PropertyRef Name="chiller_profile_id" />
+          </Key>
+          <Property Name="chiller_profile_id" Type="int" Nullable="false" />
+          <Property Name="chiller_id" Type="int" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="starttime" Type="datetime" />
+          <Property Name="endtime" Type="datetime" />
+          <Property Name="chilled_water_pump_power_kw" Type="float" />
+          <Property Name="CHWS_temp_C" Type="float" />
+          <Property Name="CHWR_temp_C" Type="float" />
+          <Property Name="cooling_coil_fan_power_kw" Type="float" />
+          <Property Name="CHWFR_m3hr" Type="float" />
+          <Property Name="cooling_air_flow_rate_m3hr" Type="float" />
+          <Property Name="cooling_air_flow_volume_m3" Type="float" />
+          <Property Name="header_CWFR_m3hr" Type="float" />
+          <Property Name="header_CWR_temp_C" Type="float" />
+          <Property Name="cooling_air_outlet_temp_C" Type="float" />
+          <Property Name="cooling_air_inlet_temp_C" Type="float" />
+          <Property Name="header_CWS_temp_C" Type="float" />
+          <Property Name="condenser_pump_power_kw" Type="float" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="company_name" Type="varchar" MaxLength="50" />
+          <Property Name="industry_type" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="post_code" Type="varchar" MaxLength="50" />
+          <Property Name="contact" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="register_system" Type="varchar" MaxLength="50" />
+          <Property Name="utility_id" Type="int" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="module_id" />
+          </Key>
+          <Property Name="module_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="display_ID" Type="varchar" MaxLength="50" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="availability" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="module_name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="main_page" Type="varchar" MaxLength="50" />
+          <Property Name="category_column" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rate_Schedule">
+          <Key>
+            <PropertyRef Name="rate_schedule_id" />
+          </Key>
+          <Property Name="rate_schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="effect_date" Type="datetime" />
+          <Property Name="energy_rate_blk_1" Type="float" />
+          <Property Name="energy_rate_blk_2" Type="float" />
+          <Property Name="energy_rate_blk_3" Type="float" />
+        </EntityType>
+        <EntityType Name="Transaction_Log">
+          <Key>
+            <PropertyRef Name="Transaction_Log_ID" />
+          </Key>
+          <Property Name="Transaction_Log_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Log_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creation_Time" Type="datetime" />
+          <Property Name="Creator" Type="int" />
+          <Property Name="Table_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Row_ID" Type="int" />
+          <Property Name="ColumnToBeChanged" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColumnOriginalValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user_module">
+          <Key>
+            <PropertyRef Name="user_module_id" />
+          </Key>
+          <Property Name="user_module_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="availability" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="users_id" Type="int" />
+          <Property Name="Module_ID" Type="int" />
+          <Property Name="menu_group" Type="varchar" MaxLength="50" />
+          <Property Name="menu_group_sequence" Type="int" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="module_display_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupFieldID" Type="uniqueidentifier" />
+          <Property Name="DisplatFieldID" Type="uniqueidentifier" />
+          <Property Name="UserModuleID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Users_ID" />
+          </Key>
+          <Property Name="Users_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Display_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Creator" Type="varchar" MaxLength="50" />
+          <Property Name="Creation_Time" Type="datetime" />
+          <Property Name="Edit_Time" Type="datetime" />
+          <Property Name="Availability" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="userlogin_id" Type="uniqueidentifier" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Department" Type="nvarchar" MaxLength="255" />
+          <Property Name="Customer_Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Authentication" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Group" Type="nvarchar" MaxLength="50" />
+          <Property Name="EPCIS_Access" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Handphone" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Utility">
+          <Key>
+            <PropertyRef Name="utility_id" />
+          </Key>
+          <Property Name="utility_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="50" />
+          <Property Name="creation_time" Type="datetime" />
+          <Property Name="edit_time" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="utility_name" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="zip_code" Type="varchar" MaxLength="50" />
+          <Property Name="contact" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="rate_schedule_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__15502E78">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller__facilit__554B8353">
+          <End Role="Chiller_Facility" Type="Self.Chiller_Facility" Multiplicity="1" />
+          <End Role="Chiller" Type="Self.Chiller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Facility">
+              <PropertyRef Name="chiller_facility_id" />
+            </Principal>
+            <Dependent Role="Chiller">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_E__equip__5733CBC5">
+          <End Role="Chiller_Equipment" Type="Self.Chiller_Equipment" Multiplicity="1" />
+          <End Role="Chiller_Equipment_Profile" Type="Self.Chiller_Equipment_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Equipment">
+              <PropertyRef Name="chiller_equipment_id" />
+            </Principal>
+            <Dependent Role="Chiller_Equipment_Profile">
+              <PropertyRef Name="equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_E__facil__563FA78C">
+          <End Role="Chiller_Facility" Type="Self.Chiller_Facility" Multiplicity="1" />
+          <End Role="Chiller_Equipment" Type="Self.Chiller_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Facility">
+              <PropertyRef Name="chiller_facility_id" />
+            </Principal>
+            <Dependent Role="Chiller_Equipment">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_F__compa__5827EFFE">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Chiller_Facility" Type="Self.Chiller_Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="company_id" />
+            </Principal>
+            <Dependent Role="Chiller_Facility">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_P__chill__591C1437">
+          <End Role="Chiller" Type="Self.Chiller" Multiplicity="1" />
+          <End Role="Chiller_Profile" Type="Self.Chiller_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller">
+              <PropertyRef Name="chiller_id" />
+            </Principal>
+            <Dependent Role="Chiller_Profile">
+              <PropertyRef Name="chiller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Compressor_CAS_System">
+          <End Role="CAS_System" Type="Self.CAS_System" Multiplicity="0..1" />
+          <End Role="CAS_Compressor" Type="Self.CAS_Compressor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_System">
+              <PropertyRef Name="CAS_system_id" />
+            </Principal>
+            <Dependent Role="CAS_Compressor">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Compressor_Profile_CAS_Compressor">
+          <End Role="CAS_Compressor" Type="Self.CAS_Compressor" Multiplicity="0..1" />
+          <End Role="CAS_Compressor_Profile" Type="Self.CAS_Compressor_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Compressor">
+              <PropertyRef Name="CAS_compressor_id" />
+            </Principal>
+            <Dependent Role="CAS_Compressor_Profile">
+              <PropertyRef Name="compressor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_End_Use_CAS_Facility">
+          <End Role="CAS_Facility" Type="Self.CAS_Facility" Multiplicity="0..1" />
+          <End Role="CAS_End_Use" Type="Self.CAS_End_Use" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_End_Use">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_End_Use_Profile_CAS_End_Uses1">
+          <End Role="CAS_End_Use" Type="Self.CAS_End_Use" Multiplicity="0..1" />
+          <End Role="CAS_End_Use_Profile" Type="Self.CAS_End_Use_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_End_Use">
+              <PropertyRef Name="CAS_end_use_id" />
+            </Principal>
+            <Dependent Role="CAS_End_Use_Profile">
+              <PropertyRef Name="end_use_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Facility_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="CAS_Facility" Type="Self.CAS_Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="company_id" />
+            </Principal>
+            <Dependent Role="CAS_Facility">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Production_Schedule_CAS_Facility">
+          <End Role="CAS_Facility" Type="Self.CAS_Facility" Multiplicity="0..1" />
+          <End Role="CAS_Production_Schedule" Type="Self.CAS_Production_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_Production_Schedule">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Reduce_Air_Leaks_CAS_System">
+          <End Role="CAS_System" Type="Self.CAS_System" Multiplicity="0..1" />
+          <End Role="CAS_Reduce_Air_Leaks" Type="Self.CAS_Reduce_Air_Leaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_System">
+              <PropertyRef Name="CAS_system_id" />
+            </Principal>
+            <Dependent Role="CAS_Reduce_Air_Leaks">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_System_CAS_Facility">
+          <End Role="CAS_Facility" Type="Self.CAS_Facility" Multiplicity="0..1" />
+          <End Role="CAS_System" Type="Self.CAS_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_System">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Utility">
+          <End Role="Utility" Type="Self.Utility" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="utility_id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="utility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utility_Rate_Schedule">
+          <End Role="Rate_Schedule" Type="Self.Rate_Schedule" Multiplicity="0..1" />
+          <End Role="Utility" Type="Self.Utility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate_Schedule">
+              <PropertyRef Name="rate_schedule_id" />
+            </Principal>
+            <Dependent Role="Utility">
+              <PropertyRef Name="rate_schedule_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CASChillerSystemModelStoreContainer">
+          <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_Compressor" EntityType="Self.CAS_Compressor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_Compressor_Profile" EntityType="Self.CAS_Compressor_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_End_Use" EntityType="Self.CAS_End_Use" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_End_Use_Profile" EntityType="Self.CAS_End_Use_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_Facility" EntityType="Self.CAS_Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_Production_Schedule" EntityType="Self.CAS_Production_Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_Reduce_Air_Leaks" EntityType="Self.CAS_Reduce_Air_Leaks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_System" EntityType="Self.CAS_System" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chiller" EntityType="Self.Chiller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chiller_Equipment" EntityType="Self.Chiller_Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chiller_Equipment_Profile" EntityType="Self.Chiller_Equipment_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chiller_Facility" EntityType="Self.Chiller_Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chiller_Profile" EntityType="Self.Chiller_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="module" EntityType="Self.module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate_Schedule" EntityType="Self.Rate_Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction_Log" EntityType="Self.Transaction_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_module" EntityType="Self.user_module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utility" EntityType="Self.Utility" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__15502E78" Association="Self.FK__aspnet_Me__UserI__15502E78">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller__facilit__554B8353" Association="Self.FK__Chiller__facilit__554B8353">
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+            <End Role="Chiller" EntitySet="Chiller" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_E__equip__5733CBC5" Association="Self.FK__Chiller_E__equip__5733CBC5">
+            <End Role="Chiller_Equipment" EntitySet="Chiller_Equipment" />
+            <End Role="Chiller_Equipment_Profile" EntitySet="Chiller_Equipment_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_E__facil__563FA78C" Association="Self.FK__Chiller_E__facil__563FA78C">
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+            <End Role="Chiller_Equipment" EntitySet="Chiller_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_F__compa__5827EFFE" Association="Self.FK__Chiller_F__compa__5827EFFE">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_P__chill__591C1437" Association="Self.FK__Chiller_P__chill__591C1437">
+            <End Role="Chiller" EntitySet="Chiller" />
+            <End Role="Chiller_Profile" EntitySet="Chiller_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Compressor_CAS_System" Association="Self.FK_CAS_Compressor_CAS_System">
+            <End Role="CAS_System" EntitySet="CAS_System" />
+            <End Role="CAS_Compressor" EntitySet="CAS_Compressor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Compressor_Profile_CAS_Compressor" Association="Self.FK_CAS_Compressor_Profile_CAS_Compressor">
+            <End Role="CAS_Compressor" EntitySet="CAS_Compressor" />
+            <End Role="CAS_Compressor_Profile" EntitySet="CAS_Compressor_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_End_Use_CAS_Facility" Association="Self.FK_CAS_End_Use_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_End_Use" EntitySet="CAS_End_Use" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_End_Use_Profile_CAS_End_Uses1" Association="Self.FK_CAS_End_Use_Profile_CAS_End_Uses1">
+            <End Role="CAS_End_Use" EntitySet="CAS_End_Use" />
+            <End Role="CAS_End_Use_Profile" EntitySet="CAS_End_Use_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Facility_Company" Association="Self.FK_CAS_Facility_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Production_Schedule_CAS_Facility" Association="Self.FK_CAS_Production_Schedule_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_Production_Schedule" EntitySet="CAS_Production_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Reduce_Air_Leaks_CAS_System" Association="Self.FK_CAS_Reduce_Air_Leaks_CAS_System">
+            <End Role="CAS_System" EntitySet="CAS_System" />
+            <End Role="CAS_Reduce_Air_Leaks" EntitySet="CAS_Reduce_Air_Leaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_System_CAS_Facility" Association="Self.FK_CAS_System_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_System" EntitySet="CAS_System" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Utility" Association="Self.FK_Company_Utility">
+            <End Role="Utility" EntitySet="Utility" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utility_Rate_Schedule" Association="Self.FK_Utility_Rate_Schedule">
+            <End Role="Rate_Schedule" EntitySet="Rate_Schedule" />
+            <End Role="Utility" EntitySet="Utility" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CASChillerSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Me__UserI__15502E78" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="Self.FK__aspnet_Me__UserI__15502E78" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="module_id" />
+          </Key>
+          <Property Name="module_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="display_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="module_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="main_page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_column" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Transaction_Log">
+          <Key>
+            <PropertyRef Name="Transaction_Log_ID" />
+          </Key>
+          <Property Name="Transaction_Log_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Log_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creation_Time" Type="DateTime" Precision="3" />
+          <Property Name="Creator" Type="Int32" />
+          <Property Name="Table_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Row_ID" Type="Int32" />
+          <Property Name="ColumnToBeChanged" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnOriginalValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user_module">
+          <Key>
+            <PropertyRef Name="user_module_id" />
+          </Key>
+          <Property Name="user_module_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="users_id" Type="Int32" />
+          <Property Name="Module_ID" Type="Int32" />
+          <Property Name="menu_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="menu_group_sequence" Type="Int32" />
+          <Property Name="sequence" Type="Int32" />
+          <Property Name="module_display_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupFieldID" Type="Guid" />
+          <Property Name="DisplatFieldID" Type="Guid" />
+          <Property Name="UserModuleID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Users_ID" />
+          </Key>
+          <Property Name="Users_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Display_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creation_Time" Type="DateTime" Precision="3" />
+          <Property Name="Edit_Time" Type="DateTime" Precision="3" />
+          <Property Name="Availability" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="User_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="userlogin_id" Type="Guid" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Designation_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Authentication" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EPCIS_Access" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Handphone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__15502E78">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CASChillerSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" />
+          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" />
+          <EntitySet Name="modules" EntityType="Self.module" />
+          <EntitySet Name="Transaction_Log" EntityType="Self.Transaction_Log" />
+          <EntitySet Name="user_module" EntityType="Self.user_module" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__15502E78" Association="Self.FK__aspnet_Me__UserI__15502E78">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <EntitySet Name="CAS_Compressor" EntityType="CASChillerSystemModel.CAS_Compressor" />
+          <EntitySet Name="CAS_Compressor_Profile" EntityType="CASChillerSystemModel.CAS_Compressor_Profile" />
+          <EntitySet Name="CAS_End_Use" EntityType="CASChillerSystemModel.CAS_End_Use" />
+          <EntitySet Name="CAS_End_Use_Profile" EntityType="CASChillerSystemModel.CAS_End_Use_Profile" />
+          <EntitySet Name="CAS_Facility" EntityType="CASChillerSystemModel.CAS_Facility" />
+          <EntitySet Name="CAS_Production_Schedule" EntityType="CASChillerSystemModel.CAS_Production_Schedule" />
+          <EntitySet Name="CAS_Reduce_Air_Leaks" EntityType="CASChillerSystemModel.CAS_Reduce_Air_Leaks" />
+          <EntitySet Name="CAS_System" EntityType="CASChillerSystemModel.CAS_System" />
+          <EntitySet Name="Chillers" EntityType="CASChillerSystemModel.Chiller" />
+          <EntitySet Name="Chiller_Equipment" EntityType="CASChillerSystemModel.Chiller_Equipment" />
+          <EntitySet Name="Chiller_Equipment_Profile" EntityType="CASChillerSystemModel.Chiller_Equipment_Profile" />
+          <EntitySet Name="Chiller_Facility" EntityType="CASChillerSystemModel.Chiller_Facility" />
+          <EntitySet Name="Chiller_Profile" EntityType="CASChillerSystemModel.Chiller_Profile" />
+          <EntitySet Name="Companies" EntityType="CASChillerSystemModel.Company" />
+          <EntitySet Name="Rate_Schedule" EntityType="CASChillerSystemModel.Rate_Schedule" />
+          <EntitySet Name="Utilities" EntityType="CASChillerSystemModel.Utility" />
+          <AssociationSet Name="FK_CAS_Compressor_CAS_System" Association="CASChillerSystemModel.FK_CAS_Compressor_CAS_System">
+            <End Role="CAS_System" EntitySet="CAS_System" />
+            <End Role="CAS_Compressor" EntitySet="CAS_Compressor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Compressor_Profile_CAS_Compressor" Association="CASChillerSystemModel.FK_CAS_Compressor_Profile_CAS_Compressor">
+            <End Role="CAS_Compressor" EntitySet="CAS_Compressor" />
+            <End Role="CAS_Compressor_Profile" EntitySet="CAS_Compressor_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_End_Use_CAS_Facility" Association="CASChillerSystemModel.FK_CAS_End_Use_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_End_Use" EntitySet="CAS_End_Use" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_End_Use_Profile_CAS_End_Uses1" Association="CASChillerSystemModel.FK_CAS_End_Use_Profile_CAS_End_Uses1">
+            <End Role="CAS_End_Use" EntitySet="CAS_End_Use" />
+            <End Role="CAS_End_Use_Profile" EntitySet="CAS_End_Use_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Facility_Company" Association="CASChillerSystemModel.FK_CAS_Facility_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Production_Schedule_CAS_Facility" Association="CASChillerSystemModel.FK_CAS_Production_Schedule_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_Production_Schedule" EntitySet="CAS_Production_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_System_CAS_Facility" Association="CASChillerSystemModel.FK_CAS_System_CAS_Facility">
+            <End Role="CAS_Facility" EntitySet="CAS_Facility" />
+            <End Role="CAS_System" EntitySet="CAS_System" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAS_Reduce_Air_Leaks_CAS_System" Association="CASChillerSystemModel.FK_CAS_Reduce_Air_Leaks_CAS_System">
+            <End Role="CAS_System" EntitySet="CAS_System" />
+            <End Role="CAS_Reduce_Air_Leaks" EntitySet="CAS_Reduce_Air_Leaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller__facilit__554B8353" Association="CASChillerSystemModel.FK__Chiller__facilit__554B8353">
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+            <End Role="Chiller" EntitySet="Chillers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_P__chill__591C1437" Association="CASChillerSystemModel.FK__Chiller_P__chill__591C1437">
+            <End Role="Chiller" EntitySet="Chillers" />
+            <End Role="Chiller_Profile" EntitySet="Chiller_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_E__equip__5733CBC5" Association="CASChillerSystemModel.FK__Chiller_E__equip__5733CBC5">
+            <End Role="Chiller_Equipment" EntitySet="Chiller_Equipment" />
+            <End Role="Chiller_Equipment_Profile" EntitySet="Chiller_Equipment_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_E__facil__563FA78C" Association="CASChillerSystemModel.FK__Chiller_E__facil__563FA78C">
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+            <End Role="Chiller_Equipment" EntitySet="Chiller_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chiller_F__compa__5827EFFE" Association="CASChillerSystemModel.FK__Chiller_F__compa__5827EFFE">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Chiller_Facility" EntitySet="Chiller_Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Utility" Association="CASChillerSystemModel.FK_Company_Utility">
+            <End Role="Utility" EntitySet="Utilities" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utility_Rate_Schedule" Association="CASChillerSystemModel.FK_Utility_Rate_Schedule">
+            <End Role="Rate_Schedule" EntitySet="Rate_Schedule" />
+            <End Role="Utility" EntitySet="Utilities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAS_Compressor">
+          <Key>
+            <PropertyRef Name="CAS_compressor_id" />
+          </Key>
+          <Property Name="CAS_compressor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="system_id" Type="Int32" />
+          <Property Name="in_service" Type="Boolean" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="motor_power" Type="Double" />
+          <Property Name="full_loaded_pressure" Type="Double" />
+          <Property Name="full_loaded_air_flow" Type="Double" />
+          <Property Name="average_temperature" Type="Double" />
+          <Property Name="atmosphere_pressure" Type="Double" />
+          <Property Name="inlet_modulation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outlet_modulation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAS_System" Relationship="CASChillerSystemModel.FK_CAS_Compressor_CAS_System" FromRole="CAS_Compressor" ToRole="CAS_System" />
+          <NavigationProperty Name="CAS_Compressor_Profile" Relationship="CASChillerSystemModel.FK_CAS_Compressor_Profile_CAS_Compressor" FromRole="CAS_Compressor" ToRole="CAS_Compressor_Profile" />
+        </EntityType>
+        <EntityType Name="CAS_Compressor_Profile">
+          <Key>
+            <PropertyRef Name="CAS_compressor_profile_id" />
+          </Key>
+          <Property Name="CAS_compressor_profile_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="compressor_id" Type="Int32" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="measure_point" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="air_flow" Type="Double" />
+          <Property Name="temperature" Type="Double" />
+          <Property Name="pressure" Type="Double" />
+          <Property Name="velocity" Type="Double" />
+          <NavigationProperty Name="CAS_Compressor" Relationship="CASChillerSystemModel.FK_CAS_Compressor_Profile_CAS_Compressor" FromRole="CAS_Compressor_Profile" ToRole="CAS_Compressor" />
+        </EntityType>
+        <EntityType Name="CAS_End_Use">
+          <Key>
+            <PropertyRef Name="CAS_end_use_id" />
+          </Key>
+          <Property Name="CAS_end_use_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="facility_id" Type="Int32" />
+          <Property Name="end_use_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="required_air_flow" Type="Double" />
+          <Property Name="required_pressure" Type="Double" />
+          <Property Name="measured_pressure" Type="Double" />
+          <NavigationProperty Name="CAS_Facility" Relationship="CASChillerSystemModel.FK_CAS_End_Use_CAS_Facility" FromRole="CAS_End_Use" ToRole="CAS_Facility" />
+          <NavigationProperty Name="CAS_End_Use_Profile" Relationship="CASChillerSystemModel.FK_CAS_End_Use_Profile_CAS_End_Uses1" FromRole="CAS_End_Use" ToRole="CAS_End_Use_Profile" />
+        </EntityType>
+        <EntityType Name="CAS_End_Use_Profile">
+          <Key>
+            <PropertyRef Name="CAS_end_use_profile_id" />
+          </Key>
+          <Property Name="CAS_end_use_profile_id" Type="Int32" Nullable="false" />
+          <Property Name="end_use_id" Type="Int32" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="measure_point" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="air_flow" Type="Double" />
+          <Property Name="temperature" Type="Double" />
+          <Property Name="pressure" Type="Double" />
+          <Property Name="velocity" Type="Double" />
+          <NavigationProperty Name="CAS_End_Use" Relationship="CASChillerSystemModel.FK_CAS_End_Use_Profile_CAS_End_Uses1" FromRole="CAS_End_Use_Profile" ToRole="CAS_End_Use" />
+        </EntityType>
+        <EntityType Name="CAS_Facility">
+          <Key>
+            <PropertyRef Name="CAS_facility_id" />
+          </Key>
+          <Property Name="CAS_facility_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="facility_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="annual_energy_use" Type="Double" />
+          <Property Name="end_use_number" Type="Int32" />
+          <NavigationProperty Name="CAS_End_Use" Relationship="CASChillerSystemModel.FK_CAS_End_Use_CAS_Facility" FromRole="CAS_Facility" ToRole="CAS_End_Use" />
+          <NavigationProperty Name="Company" Relationship="CASChillerSystemModel.FK_CAS_Facility_Company" FromRole="CAS_Facility" ToRole="Company" />
+          <NavigationProperty Name="CAS_Production_Schedule" Relationship="CASChillerSystemModel.FK_CAS_Production_Schedule_CAS_Facility" FromRole="CAS_Facility" ToRole="CAS_Production_Schedule" />
+          <NavigationProperty Name="CAS_System" Relationship="CASChillerSystemModel.FK_CAS_System_CAS_Facility" FromRole="CAS_Facility" ToRole="CAS_System" />
+        </EntityType>
+        <EntityType Name="CAS_Production_Schedule">
+          <Key>
+            <PropertyRef Name="CAS_production_schedule_id" />
+          </Key>
+          <Property Name="CAS_production_schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facility_id" Type="Int32" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="schedule_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="operating_hours" Type="Double" />
+          <Property Name="standby_hours" Type="Double" />
+          <Property Name="off_hours" Type="Double" />
+          <Property Name="total_days" Type="Double" />
+          <NavigationProperty Name="CAS_Facility" Relationship="CASChillerSystemModel.FK_CAS_Production_Schedule_CAS_Facility" FromRole="CAS_Production_Schedule" ToRole="CAS_Facility" />
+        </EntityType>
+        <EntityType Name="CAS_Reduce_Air_Leaks">
+          <Key>
+            <PropertyRef Name="CAS_reduce_air_leaks_id" />
+          </Key>
+          <Property Name="CAS_reduce_air_leaks_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="system_id" Type="Int32" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="air_leak_before" Type="Double" />
+          <Property Name="air_leak_after" Type="Double" />
+          <Property Name="reduced_air_leak" Type="Double" />
+          <Property Name="compressor_efficiency" Type="Double" />
+          <Property Name="annual_energy_savings" Type="Double" />
+          <Property Name="repair_cost" Type="Double" />
+          <Property Name="payback_years" Type="Int32" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAS_System" Relationship="CASChillerSystemModel.FK_CAS_Reduce_Air_Leaks_CAS_System" FromRole="CAS_Reduce_Air_Leaks" ToRole="CAS_System" />
+        </EntityType>
+        <EntityType Name="CAS_System">
+          <Key>
+            <PropertyRef Name="CAS_system_id" />
+          </Key>
+          <Property Name="CAS_system_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="facility_id" Type="Int32" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nominal_system_pressure" Type="Double" />
+          <Property Name="air_flow_capacity" Type="Double" />
+          <Property Name="system_elevation" Type="Double" />
+          <Property Name="system_air_storage_capacity" Type="Double" />
+          <Property Name="sequencer_control" Type="Boolean" />
+          <NavigationProperty Name="CAS_Compressor" Relationship="CASChillerSystemModel.FK_CAS_Compressor_CAS_System" FromRole="CAS_System" ToRole="CAS_Compressor" />
+          <NavigationProperty Name="CAS_Facility" Relationship="CASChillerSystemModel.FK_CAS_System_CAS_Facility" FromRole="CAS_System" ToRole="CAS_Facility" />
+          <NavigationProperty Name="CAS_Reduce_Air_Leaks" Relationship="CASChillerSystemModel.FK_CAS_Reduce_Air_Leaks_CAS_System" FromRole="CAS_System" ToRole="CAS_Reduce_Air_Leaks" />
+        </EntityType>
+        <EntityType Name="Chiller">
+          <Key>
+            <PropertyRef Name="chiller_id" />
+          </Key>
+          <Property Name="chiller_id" Type="Int32" Nullable="false" />
+          <Property Name="facility_id" Type="Int32" Nullable="false" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="total_system_power_kw" Type="Double" />
+          <Property Name="cooling_load_RT" Type="Double" />
+          <Property Name="system_efficiency_kwRT" Type="Double" />
+          <Property Name="system_heat_balance" Type="Double" />
+          <NavigationProperty Name="Chiller_Facility" Relationship="CASChillerSystemModel.FK__Chiller__facilit__554B8353" FromRole="Chiller" ToRole="Chiller_Facility" />
+          <NavigationProperty Name="Chiller_Profile" Relationship="CASChillerSystemModel.FK__Chiller_P__chill__591C1437" FromRole="Chiller" ToRole="Chiller_Profile" />
+        </EntityType>
+        <EntityType Name="Chiller_Equipment">
+          <Key>
+            <PropertyRef Name="chiller_equipment_id" />
+          </Key>
+          <Property Name="chiller_equipment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="etype" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="facility_id" Type="Int32" Nullable="false" />
+          <Property Name="locationx" Type="Double" Nullable="false" />
+          <Property Name="locationy" Type="Double" Nullable="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Chiller_Equipment_Profile" Relationship="CASChillerSystemModel.FK__Chiller_E__equip__5733CBC5" FromRole="Chiller_Equipment" ToRole="Chiller_Equipment_Profile" />
+          <NavigationProperty Name="Chiller_Facility" Relationship="CASChillerSystemModel.FK__Chiller_E__facil__563FA78C" FromRole="Chiller_Equipment" ToRole="Chiller_Facility" />
+        </EntityType>
+        <EntityType Name="Chiller_Equipment_Profile">
+          <Key>
+            <PropertyRef Name="chiller_equipment_profile_id" />
+          </Key>
+          <Property Name="chiller_equipment_profile_id" Type="Int32" Nullable="false" />
+          <Property Name="equipment_id" Type="Int32" Nullable="false" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="e_status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="energy" Type="Double" />
+          <NavigationProperty Name="Chiller_Equipment" Relationship="CASChillerSystemModel.FK__Chiller_E__equip__5733CBC5" FromRole="Chiller_Equipment_Profile" ToRole="Chiller_Equipment" />
+        </EntityType>
+        <EntityType Name="Chiller_Facility">
+          <Key>
+            <PropertyRef Name="chiller_facility_id" />
+          </Key>
+          <Property Name="chiller_facility_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="facility_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="annual_energy_use" Type="Double" />
+          <Property Name="flength" Type="Double" />
+          <Property Name="fwidth" Type="Double" />
+          <Property Name="fheight" Type="Double" />
+          <NavigationProperty Name="Chillers" Relationship="CASChillerSystemModel.FK__Chiller__facilit__554B8353" FromRole="Chiller_Facility" ToRole="Chiller" />
+          <NavigationProperty Name="Chiller_Equipment" Relationship="CASChillerSystemModel.FK__Chiller_E__facil__563FA78C" FromRole="Chiller_Facility" ToRole="Chiller_Equipment" />
+          <NavigationProperty Name="Company" Relationship="CASChillerSystemModel.FK__Chiller_F__compa__5827EFFE" FromRole="Chiller_Facility" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Chiller_Profile">
+          <Key>
+            <PropertyRef Name="chiller_profile_id" />
+          </Key>
+          <Property Name="chiller_profile_id" Type="Int32" Nullable="false" />
+          <Property Name="chiller_id" Type="Int32" Nullable="false" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="starttime" Type="DateTime" Precision="3" />
+          <Property Name="endtime" Type="DateTime" Precision="3" />
+          <Property Name="chilled_water_pump_power_kw" Type="Double" />
+          <Property Name="CHWS_temp_C" Type="Double" />
+          <Property Name="CHWR_temp_C" Type="Double" />
+          <Property Name="cooling_coil_fan_power_kw" Type="Double" />
+          <Property Name="CHWFR_m3hr" Type="Double" />
+          <Property Name="cooling_air_flow_rate_m3hr" Type="Double" />
+          <Property Name="cooling_air_flow_volume_m3" Type="Double" />
+          <Property Name="header_CWFR_m3hr" Type="Double" />
+          <Property Name="header_CWR_temp_C" Type="Double" />
+          <Property Name="cooling_air_outlet_temp_C" Type="Double" />
+          <Property Name="cooling_air_inlet_temp_C" Type="Double" />
+          <Property Name="header_CWS_temp_C" Type="Double" />
+          <Property Name="condenser_pump_power_kw" Type="Double" />
+          <NavigationProperty Name="Chiller" Relationship="CASChillerSystemModel.FK__Chiller_P__chill__591C1437" FromRole="Chiller_Profile" ToRole="Chiller" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="industry_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="post_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="register_system" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="utility_id" Type="Int32" />
+          <NavigationProperty Name="CAS_Facility" Relationship="CASChillerSystemModel.FK_CAS_Facility_Company" FromRole="Company" ToRole="CAS_Facility" />
+          <NavigationProperty Name="Chiller_Facility" Relationship="CASChillerSystemModel.FK__Chiller_F__compa__5827EFFE" FromRole="Company" ToRole="Chiller_Facility" />
+          <NavigationProperty Name="Utility" Relationship="CASChillerSystemModel.FK_Company_Utility" FromRole="Company" ToRole="Utility" />
+        </EntityType>
+        <EntityType Name="Rate_Schedule">
+          <Key>
+            <PropertyRef Name="rate_schedule_id" />
+          </Key>
+          <Property Name="rate_schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="effect_date" Type="DateTime" Precision="3" />
+          <Property Name="energy_rate_blk_1" Type="Double" />
+          <Property Name="energy_rate_blk_2" Type="Double" />
+          <Property Name="energy_rate_blk_3" Type="Double" />
+          <NavigationProperty Name="Utilities" Relationship="CASChillerSystemModel.FK_Utility_Rate_Schedule" FromRole="Rate_Schedule" ToRole="Utility" />
+        </EntityType>
+        <EntityType Name="Utility">
+          <Key>
+            <PropertyRef Name="utility_id" />
+          </Key>
+          <Property Name="utility_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creation_time" Type="DateTime" Precision="3" />
+          <Property Name="edit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="utility_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="zip_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rate_schedule_id" Type="Int32" />
+          <NavigationProperty Name="Companies" Relationship="CASChillerSystemModel.FK_Company_Utility" FromRole="Utility" ToRole="Company" />
+          <NavigationProperty Name="Rate_Schedule" Relationship="CASChillerSystemModel.FK_Utility_Rate_Schedule" FromRole="Utility" ToRole="Rate_Schedule" />
+        </EntityType>
+        <Association Name="FK_CAS_Compressor_CAS_System">
+          <End Type="CASChillerSystemModel.CAS_System" Role="CAS_System" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_Compressor" Role="CAS_Compressor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_System">
+              <PropertyRef Name="CAS_system_id" />
+            </Principal>
+            <Dependent Role="CAS_Compressor">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Compressor_Profile_CAS_Compressor">
+          <End Type="CASChillerSystemModel.CAS_Compressor" Role="CAS_Compressor" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_Compressor_Profile" Role="CAS_Compressor_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Compressor">
+              <PropertyRef Name="CAS_compressor_id" />
+            </Principal>
+            <Dependent Role="CAS_Compressor_Profile">
+              <PropertyRef Name="compressor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_End_Use_CAS_Facility">
+          <End Type="CASChillerSystemModel.CAS_Facility" Role="CAS_Facility" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_End_Use" Role="CAS_End_Use" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_End_Use">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_End_Use_Profile_CAS_End_Uses1">
+          <End Type="CASChillerSystemModel.CAS_End_Use" Role="CAS_End_Use" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_End_Use_Profile" Role="CAS_End_Use_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_End_Use">
+              <PropertyRef Name="CAS_end_use_id" />
+            </Principal>
+            <Dependent Role="CAS_End_Use_Profile">
+              <PropertyRef Name="end_use_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Facility_Company">
+          <End Type="CASChillerSystemModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_Facility" Role="CAS_Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="company_id" />
+            </Principal>
+            <Dependent Role="CAS_Facility">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Production_Schedule_CAS_Facility">
+          <End Type="CASChillerSystemModel.CAS_Facility" Role="CAS_Facility" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_Production_Schedule" Role="CAS_Production_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_Production_Schedule">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_System_CAS_Facility">
+          <End Type="CASChillerSystemModel.CAS_Facility" Role="CAS_Facility" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_System" Role="CAS_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_Facility">
+              <PropertyRef Name="CAS_facility_id" />
+            </Principal>
+            <Dependent Role="CAS_System">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAS_Reduce_Air_Leaks_CAS_System">
+          <End Type="CASChillerSystemModel.CAS_System" Role="CAS_System" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.CAS_Reduce_Air_Leaks" Role="CAS_Reduce_Air_Leaks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAS_System">
+              <PropertyRef Name="CAS_system_id" />
+            </Principal>
+            <Dependent Role="CAS_Reduce_Air_Leaks">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller__facilit__554B8353">
+          <End Type="CASChillerSystemModel.Chiller_Facility" Role="Chiller_Facility" Multiplicity="1" />
+          <End Type="CASChillerSystemModel.Chiller" Role="Chiller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Facility">
+              <PropertyRef Name="chiller_facility_id" />
+            </Principal>
+            <Dependent Role="Chiller">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_P__chill__591C1437">
+          <End Type="CASChillerSystemModel.Chiller" Role="Chiller" Multiplicity="1" />
+          <End Type="CASChillerSystemModel.Chiller_Profile" Role="Chiller_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller">
+              <PropertyRef Name="chiller_id" />
+            </Principal>
+            <Dependent Role="Chiller_Profile">
+              <PropertyRef Name="chiller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_E__equip__5733CBC5">
+          <End Type="CASChillerSystemModel.Chiller_Equipment" Role="Chiller_Equipment" Multiplicity="1" />
+          <End Type="CASChillerSystemModel.Chiller_Equipment_Profile" Role="Chiller_Equipment_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Equipment">
+              <PropertyRef Name="chiller_equipment_id" />
+            </Principal>
+            <Dependent Role="Chiller_Equipment_Profile">
+              <PropertyRef Name="equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_E__facil__563FA78C">
+          <End Type="CASChillerSystemModel.Chiller_Facility" Role="Chiller_Facility" Multiplicity="1" />
+          <End Type="CASChillerSystemModel.Chiller_Equipment" Role="Chiller_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chiller_Facility">
+              <PropertyRef Name="chiller_facility_id" />
+            </Principal>
+            <Dependent Role="Chiller_Equipment">
+              <PropertyRef Name="facility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chiller_F__compa__5827EFFE">
+          <End Type="CASChillerSystemModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="CASChillerSystemModel.Chiller_Facility" Role="Chiller_Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="company_id" />
+            </Principal>
+            <Dependent Role="Chiller_Facility">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Utility">
+          <End Type="CASChillerSystemModel.Utility" Role="Utility" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="utility_id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="utility_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utility_Rate_Schedule">
+          <End Type="CASChillerSystemModel.Rate_Schedule" Role="Rate_Schedule" Multiplicity="0..1" />
+          <End Type="CASChillerSystemModel.Utility" Role="Utility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate_Schedule">
+              <PropertyRef Name="rate_schedule_id" />
+            </Principal>
+            <Dependent Role="Utility">
+              <PropertyRef Name="rate_schedule_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CASChillerSystemModelStoreContainer" CdmEntityContainer="CASChillerSystemEntities">
+          <EntitySetMapping Name="aspnet_Membership">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.aspnet_Membership">
+              <MappingFragment StoreEntitySet="aspnet_Membership">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.aspnet_Users">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modules">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.module">
+              <MappingFragment StoreEntitySet="module">
+                <ScalarProperty Name="module_id" ColumnName="module_id" />
+                <ScalarProperty Name="display_ID" ColumnName="display_ID" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="module_name" ColumnName="module_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="main_page" ColumnName="main_page" />
+                <ScalarProperty Name="category_column" ColumnName="category_column" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaction_Log">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Transaction_Log">
+              <MappingFragment StoreEntitySet="Transaction_Log">
+                <ScalarProperty Name="Transaction_Log_ID" ColumnName="Transaction_Log_ID" />
+                <ScalarProperty Name="Log_Description" ColumnName="Log_Description" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Table_Name" ColumnName="Table_Name" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="ColumnToBeChanged" ColumnName="ColumnToBeChanged" />
+                <ScalarProperty Name="ColumnOriginalValue" ColumnName="ColumnOriginalValue" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_module">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.user_module">
+              <MappingFragment StoreEntitySet="user_module">
+                <ScalarProperty Name="user_module_id" ColumnName="user_module_id" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="users_id" ColumnName="users_id" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+                <ScalarProperty Name="menu_group" ColumnName="menu_group" />
+                <ScalarProperty Name="menu_group_sequence" ColumnName="menu_group_sequence" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="module_display_name" ColumnName="module_display_name" />
+                <ScalarProperty Name="GroupFieldID" ColumnName="GroupFieldID" />
+                <ScalarProperty Name="DisplatFieldID" ColumnName="DisplatFieldID" />
+                <ScalarProperty Name="UserModuleID" ColumnName="UserModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+                <ScalarProperty Name="Display_ID" ColumnName="Display_ID" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Edit_Time" ColumnName="Edit_Time" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="userlogin_id" ColumnName="userlogin_id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Designation_2" ColumnName="Designation_2" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Authentication" ColumnName="Authentication" />
+                <ScalarProperty Name="User_Group" ColumnName="User_Group" />
+                <ScalarProperty Name="EPCIS_Access" ColumnName="EPCIS_Access" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Handphone" ColumnName="Handphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_Compressor">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_Compressor">
+              <MappingFragment StoreEntitySet="CAS_Compressor">
+                <ScalarProperty Name="outlet_modulation" ColumnName="outlet_modulation" />
+                <ScalarProperty Name="inlet_modulation" ColumnName="inlet_modulation" />
+                <ScalarProperty Name="atmosphere_pressure" ColumnName="atmosphere_pressure" />
+                <ScalarProperty Name="average_temperature" ColumnName="average_temperature" />
+                <ScalarProperty Name="full_loaded_air_flow" ColumnName="full_loaded_air_flow" />
+                <ScalarProperty Name="full_loaded_pressure" ColumnName="full_loaded_pressure" />
+                <ScalarProperty Name="motor_power" ColumnName="motor_power" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="in_service" ColumnName="in_service" />
+                <ScalarProperty Name="system_id" ColumnName="system_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="CAS_compressor_id" ColumnName="CAS_compressor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_Compressor_Profile">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_Compressor_Profile">
+              <MappingFragment StoreEntitySet="CAS_Compressor_Profile">
+                <ScalarProperty Name="velocity" ColumnName="velocity" />
+                <ScalarProperty Name="pressure" ColumnName="pressure" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="air_flow" ColumnName="air_flow" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="measure_point" ColumnName="measure_point" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="compressor_id" ColumnName="compressor_id" />
+                <ScalarProperty Name="CAS_compressor_profile_id" ColumnName="CAS_compressor_profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_End_Use">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_End_Use">
+              <MappingFragment StoreEntitySet="CAS_End_Use">
+                <ScalarProperty Name="measured_pressure" ColumnName="measured_pressure" />
+                <ScalarProperty Name="required_pressure" ColumnName="required_pressure" />
+                <ScalarProperty Name="required_air_flow" ColumnName="required_air_flow" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="end_use_name" ColumnName="end_use_name" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="CAS_end_use_id" ColumnName="CAS_end_use_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_End_Use_Profile">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_End_Use_Profile">
+              <MappingFragment StoreEntitySet="CAS_End_Use_Profile">
+                <ScalarProperty Name="velocity" ColumnName="velocity" />
+                <ScalarProperty Name="pressure" ColumnName="pressure" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="air_flow" ColumnName="air_flow" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="measure_point" ColumnName="measure_point" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="end_use_id" ColumnName="end_use_id" />
+                <ScalarProperty Name="CAS_end_use_profile_id" ColumnName="CAS_end_use_profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_Facility">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_Facility">
+              <MappingFragment StoreEntitySet="CAS_Facility">
+                <ScalarProperty Name="end_use_number" ColumnName="end_use_number" />
+                <ScalarProperty Name="annual_energy_use" ColumnName="annual_energy_use" />
+                <ScalarProperty Name="facility_name" ColumnName="facility_name" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="CAS_facility_id" ColumnName="CAS_facility_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_Production_Schedule">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_Production_Schedule">
+              <MappingFragment StoreEntitySet="CAS_Production_Schedule">
+                <ScalarProperty Name="total_days" ColumnName="total_days" />
+                <ScalarProperty Name="off_hours" ColumnName="off_hours" />
+                <ScalarProperty Name="standby_hours" ColumnName="standby_hours" />
+                <ScalarProperty Name="operating_hours" ColumnName="operating_hours" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="schedule_name" ColumnName="schedule_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+                <ScalarProperty Name="CAS_production_schedule_id" ColumnName="CAS_production_schedule_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_Reduce_Air_Leaks">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_Reduce_Air_Leaks">
+              <MappingFragment StoreEntitySet="CAS_Reduce_Air_Leaks">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="payback_years" ColumnName="payback_years" />
+                <ScalarProperty Name="repair_cost" ColumnName="repair_cost" />
+                <ScalarProperty Name="annual_energy_savings" ColumnName="annual_energy_savings" />
+                <ScalarProperty Name="compressor_efficiency" ColumnName="compressor_efficiency" />
+                <ScalarProperty Name="reduced_air_leak" ColumnName="reduced_air_leak" />
+                <ScalarProperty Name="air_leak_after" ColumnName="air_leak_after" />
+                <ScalarProperty Name="air_leak_before" ColumnName="air_leak_before" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="system_id" ColumnName="system_id" />
+                <ScalarProperty Name="CAS_reduce_air_leaks_id" ColumnName="CAS_reduce_air_leaks_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_System">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.CAS_System">
+              <MappingFragment StoreEntitySet="CAS_System">
+                <ScalarProperty Name="sequencer_control" ColumnName="sequencer_control" />
+                <ScalarProperty Name="system_air_storage_capacity" ColumnName="system_air_storage_capacity" />
+                <ScalarProperty Name="system_elevation" ColumnName="system_elevation" />
+                <ScalarProperty Name="air_flow_capacity" ColumnName="air_flow_capacity" />
+                <ScalarProperty Name="nominal_system_pressure" ColumnName="nominal_system_pressure" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="CAS_system_id" ColumnName="CAS_system_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chillers">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Chiller">
+              <MappingFragment StoreEntitySet="Chiller">
+                <ScalarProperty Name="system_heat_balance" ColumnName="system_heat_balance" />
+                <ScalarProperty Name="system_efficiency_kwRT" ColumnName="system_efficiency_kwRT" />
+                <ScalarProperty Name="cooling_load_RT" ColumnName="cooling_load_RT" />
+                <ScalarProperty Name="total_system_power_kw" ColumnName="total_system_power_kw" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+                <ScalarProperty Name="chiller_id" ColumnName="chiller_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chiller_Equipment">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Chiller_Equipment">
+              <MappingFragment StoreEntitySet="Chiller_Equipment">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="locationy" ColumnName="locationy" />
+                <ScalarProperty Name="locationx" ColumnName="locationx" />
+                <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+                <ScalarProperty Name="ename" ColumnName="ename" />
+                <ScalarProperty Name="etype" ColumnName="etype" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="chiller_equipment_id" ColumnName="chiller_equipment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chiller_Equipment_Profile">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Chiller_Equipment_Profile">
+              <MappingFragment StoreEntitySet="Chiller_Equipment_Profile">
+                <ScalarProperty Name="energy" ColumnName="energy" />
+                <ScalarProperty Name="e_status" ColumnName="e_status" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="equipment_id" ColumnName="equipment_id" />
+                <ScalarProperty Name="chiller_equipment_profile_id" ColumnName="chiller_equipment_profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chiller_Facility">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Chiller_Facility">
+              <MappingFragment StoreEntitySet="Chiller_Facility">
+                <ScalarProperty Name="fheight" ColumnName="fheight" />
+                <ScalarProperty Name="fwidth" ColumnName="fwidth" />
+                <ScalarProperty Name="flength" ColumnName="flength" />
+                <ScalarProperty Name="annual_energy_use" ColumnName="annual_energy_use" />
+                <ScalarProperty Name="facility_name" ColumnName="facility_name" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="chiller_facility_id" ColumnName="chiller_facility_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chiller_Profile">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Chiller_Profile">
+              <MappingFragment StoreEntitySet="Chiller_Profile">
+                <ScalarProperty Name="condenser_pump_power_kw" ColumnName="condenser_pump_power_kw" />
+                <ScalarProperty Name="header_CWS_temp_C" ColumnName="header_CWS_temp_C" />
+                <ScalarProperty Name="cooling_air_inlet_temp_C" ColumnName="cooling_air_inlet_temp_C" />
+                <ScalarProperty Name="cooling_air_outlet_temp_C" ColumnName="cooling_air_outlet_temp_C" />
+                <ScalarProperty Name="header_CWR_temp_C" ColumnName="header_CWR_temp_C" />
+                <ScalarProperty Name="header_CWFR_m3hr" ColumnName="header_CWFR_m3hr" />
+                <ScalarProperty Name="cooling_air_flow_volume_m3" ColumnName="cooling_air_flow_volume_m3" />
+                <ScalarProperty Name="cooling_air_flow_rate_m3hr" ColumnName="cooling_air_flow_rate_m3hr" />
+                <ScalarProperty Name="CHWFR_m3hr" ColumnName="CHWFR_m3hr" />
+                <ScalarProperty Name="cooling_coil_fan_power_kw" ColumnName="cooling_coil_fan_power_kw" />
+                <ScalarProperty Name="CHWR_temp_C" ColumnName="CHWR_temp_C" />
+                <ScalarProperty Name="CHWS_temp_C" ColumnName="CHWS_temp_C" />
+                <ScalarProperty Name="chilled_water_pump_power_kw" ColumnName="chilled_water_pump_power_kw" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="chiller_id" ColumnName="chiller_id" />
+                <ScalarProperty Name="chiller_profile_id" ColumnName="chiller_profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="utility_id" ColumnName="utility_id" />
+                <ScalarProperty Name="register_system" ColumnName="register_system" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="post_code" ColumnName="post_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="industry_type" ColumnName="industry_type" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate_Schedule">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Rate_Schedule">
+              <MappingFragment StoreEntitySet="Rate_Schedule">
+                <ScalarProperty Name="energy_rate_blk_3" ColumnName="energy_rate_blk_3" />
+                <ScalarProperty Name="energy_rate_blk_2" ColumnName="energy_rate_blk_2" />
+                <ScalarProperty Name="energy_rate_blk_1" ColumnName="energy_rate_blk_1" />
+                <ScalarProperty Name="effect_date" ColumnName="effect_date" />
+                <ScalarProperty Name="rate_schedule_id" ColumnName="rate_schedule_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilities">
+            <EntityTypeMapping TypeName="CASChillerSystemModel.Utility">
+              <MappingFragment StoreEntitySet="Utility">
+                <ScalarProperty Name="rate_schedule_id" ColumnName="rate_schedule_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="utility_name" ColumnName="utility_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="edit_time" ColumnName="edit_time" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="utility_id" ColumnName="utility_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c93994863b3941abae00d2a62a2099d3" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="CASChillerSystemModel.aspnet_Membership" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.aspnet_Users" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.module" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Transaction_Log" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.user_module" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.User" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__aspnet_Me__UserI__15502E78" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_Compressor" Width="1.5" PointX="14.625" PointY="35.125" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_Compressor_Profile" Width="1.5" PointX="16.875" PointY="35.625" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_End_Use" Width="1.5" PointX="12.375" PointY="25.375" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_End_Use_Profile" Width="1.5" PointX="14.625" PointY="25.875" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_Facility" Width="1.5" PointX="10.125" PointY="28.5" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_Production_Schedule" Width="1.5" PointX="12.375" PointY="21" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_Reduce_Air_Leaks" Width="1.5" PointX="14.625" PointY="30.25" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.CAS_System" Width="1.5" PointX="12.375" PointY="32.875" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Chiller" Width="1.5" PointX="12.375" PointY="11.25" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Chiller_Equipment" Width="1.5" PointX="12.375" PointY="16.25" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Chiller_Equipment_Profile" Width="1.5" PointX="14.625" PointY="16.875" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Chiller_Facility" Width="1.5" PointX="10.125" PointY="13.375" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Chiller_Profile" Width="1.5" PointX="14.625" PointY="10.25" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Company" Width="1.5" PointX="7.875" PointY="22.75" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Rate_Schedule" Width="1.5" PointX="3.375" PointY="23.875" />
+        <EntityTypeShape EntityType="CASChillerSystemModel.Utility" Width="1.5" PointX="5.625" PointY="23.125" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_Compressor_CAS_System" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_Compressor_Profile_CAS_Compressor" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_End_Use_CAS_Facility" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_End_Use_Profile_CAS_End_Uses1" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_Facility_Company" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_Production_Schedule_CAS_Facility" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_System_CAS_Facility" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_CAS_Reduce_Air_Leaks_CAS_System" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__Chiller__facilit__554B8353" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__Chiller_P__chill__591C1437" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__Chiller_E__equip__5733CBC5" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__Chiller_E__facil__563FA78C" />
+        <AssociationConnector Association="CASChillerSystemModel.FK__Chiller_F__compa__5827EFFE" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_Company_Utility" />
+        <AssociationConnector Association="CASChillerSystemModel.FK_Utility_Rate_Schedule" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
